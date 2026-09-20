@@ -20,7 +20,10 @@ function App() {
 
   const handleSavedTechnology = (technology: Itechnology) => {
     // console.log({technology});
+    setSaved([...saved, technology])
+
   }
+  // console.log(saved);
 
   return (
     <>

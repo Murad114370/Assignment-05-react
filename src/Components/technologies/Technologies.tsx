@@ -1,32 +1,41 @@
-import React, { use } from 'react';
-import type { Itechnology } from '../../types/technology';
-import AvailableTechnologies from './AvailableTechnologies';
+import React, { use, useState } from "react";
+import { toast } from "react-toastify";
+
+import type { Itechnology } from "../../types/technologyTypes";
+import TechnologiesCard from "./TechnologiesCard";
 
 interface TechnologiesProps {
-    technologiesPromise: Promise<Itechnology[]>
+  technologiesPromise: Promise<Itechnology[]>;
 }
 
 const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
-    // console.log(technologiesPromise);
-    const technologies = use(technologiesPromise);
-    console.log(technologies);
-    return (
-        <div className='container mx-auto'>
+  const technologies = use(technologiesPromise);
 
-            <div className='flex justify-between gap-4 mb-2'>
-                <h2 className='font-bold text-xl'>Available technologies</h2>
+  
+  return (
+    <div className="col-span-3 ">
 
-                <div>
-                    <button className='btn btn-success'>Available</button>
-                    <button className='btn '>Selected</button>
-                </div>
-            </div>
+      <div>
+        <h2 className="font-bold text-5xl pb-3">
+        Explore <span className="text-[#EC4899]">Technologies</span>
+      </h2>
+      <p className="text-2xl text-[#64748B]">
+        Pick one technology per category to build your ideal stack.
+      </p>
+      </div>
 
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+        {technologies.length === 0 && (
+            <p >No technologies selected yet.</p>
+        )}
 
-            <AvailableTechnologies technologies={technologies}></AvailableTechnologies>
+        {technologies.map((singleTechnology) => (
+            <TechnologiesCard key={singleTechnology.id} technology={singleTechnology}></TechnologiesCard>
+        ) )}
+      </div>
 
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Technologies;

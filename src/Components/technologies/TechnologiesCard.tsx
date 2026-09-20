@@ -4,10 +4,12 @@ import type { Itechnology } from "../../types/technologyTypes";
 
 type TechnologyCardProps = {
     technology: Itechnology,
+    handleSavedTechnology: (technology: Itechnology) => void
 
 }
 
-const TechnologiesCard = ({technology}: TechnologyCardProps) => {
+const TechnologiesCard = ({technology, handleSavedTechnology}: TechnologyCardProps) => {
+    const {id, name, category, description, icon, rating, difficulty, badge } = technology;
     const isSelected = false;
     // const [isSelected, setSelected] = useState(false);
 
@@ -22,38 +24,38 @@ const TechnologiesCard = ({technology}: TechnologyCardProps) => {
                     <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
 
                         <img
-                            src={technology.icon}
-                            alt={technology.name}
+                            src={icon}
+                            alt={name}
                             className="w-11 h-11 object-contain"
                         />
 
                     </div>
 
                     <div className="badge badge-primary badge-outline font-medium">
-                        {technology.badge}
+                        {badge}
                     </div>
 
                 </div>
 
                 {/* Technology Name */}
                 <h2 className="card-title text-xl font-bold mt-5">
-                    {technology.name}
+                    {name}
                 </h2>
 
                 {/* Description */}
                 <p className="text-sm text-base-content/60 leading-6 mt-2 line-clamp-3">
-                    {technology.description}
+                    {description}
                 </p>
 
                 {/* Category + Difficulty + Rating */}
                 <div className="flex items-center justify-evenly gap-2 mt-5 pt-4 border-t border-base-200">
 
                     <span className="badge badge-outline font-medium">
-                        {technology.category}
+                        {category}
                     </span>
 
                     <span className="badge badge-ghost font-medium">
-                        {technology.difficulty}
+                        {difficulty}
                     </span>
 
                     <div className="flex items-center gap-1">
@@ -62,7 +64,7 @@ const TechnologiesCard = ({technology}: TechnologyCardProps) => {
                         </span>
 
                         <span className="font-bold">
-                            {technology.rating}
+                            {rating}
                         </span>
                     </div>
 
@@ -72,15 +74,15 @@ const TechnologiesCard = ({technology}: TechnologyCardProps) => {
                 <div className="card-actions mt-6">
 
                     <button
-                        // onClick={() => {
-                        //     onAdd(technology);
+                        onClick={() => {
+                            handleSavedTechnology(technology);
 
-                        //     toast.success(
-                        //         `${technology.name} added to your stack!`
-                        //     );
+                            toast.success(
+                                `${name} added to your stack!`
+                            );
 
-                        //     setSelected(true);
-                        // }}
+                            // setSelected(true);
+                        }}
                         className="btn bg-black text-white w-full rounded-xl font-semibold group-hover:shadow-md transition-shadow duration-300"
                         disabled={isSelected}
                     >

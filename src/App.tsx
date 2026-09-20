@@ -1,8 +1,9 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Banner from "./Components/Banner"
 import Nav from "./Components/Nav"
 import Technologies from "./Components/technologies/Technologies";
 import type { Itechnology } from "./types/technologyTypes";
+import StackingList from "./Components/technologies/StackingList";
 
 
 const technologiesFetch = async (): Promise<Itechnology[]> => {
@@ -15,6 +16,11 @@ const technologiesFetch = async (): Promise<Itechnology[]> => {
 
 const technologiesPromise = technologiesFetch();
 function App() {
+  const [saved, setSaved] = useState<Itechnology[]>([])
+
+  const handleSavedTechnology = (technology: Itechnology) => {
+    // console.log({technology});
+  }
 
   return (
     <>
@@ -24,17 +30,28 @@ function App() {
       <main>
         <section className="container mx-auto my-10">
 
+          {/* Heading */}
+          <div className="my-5">
+            <h2 className="font-bold text-5xl pb-3">
+              Explore <span className="text-[#EC4899]">Technologies</span>
+            </h2>
+            <p className="text-2xl text-[#64748B]">
+              Pick one technology per category to build your ideal stack.
+            </p>
+          </div>
+
+          
+          {/* Card & Stack */}
           <div className="grid grid-cols-4 gap-5">
             {/* technologies component */}
             <Suspense fallback={<h2>Loading...</h2>}>
-              <Technologies technologiesPromise={technologiesPromise}></Technologies>
+              <Technologies
+                  handleSavedTechnology={handleSavedTechnology}
+                  technologiesPromise={technologiesPromise}></Technologies>
             </Suspense>
-            
-            {/* stacking list */}
-            <div className="col-span-1">
-              <h2>Your Stack</h2>
 
-            </div>
+            {/* stacking list */}
+            <StackingList technologies={saved}></StackingList>
           </div>
 
         </section>

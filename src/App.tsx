@@ -21,7 +21,17 @@ function App() {
 
   const handleSavedTechnology = (technology: Itechnology) => {
     // console.log({technology});
+    // check technology is added
+    const ids = saved.map((item) => item.id)
+
+    if(ids.includes(technology.id)){
+      toast.error(`${technology.name} is already on your stack`)
+      return
+    }
+
     setSaved([...saved, technology])
+      toast.success(`${technology.name} is added on your stack`)
+
   }
   // console.log(saved);
 

@@ -7,9 +7,10 @@ import TechnologiesCard from "./TechnologiesCard";
 interface TechnologiesProps {
   technologiesPromise: Promise<Itechnology[]>;
   handleSavedTechnology: (technology: Itechnology) => void
+  saved: Itechnology[]
 }
 
-const Technologies = ({ technologiesPromise, handleSavedTechnology }: TechnologiesProps) => {
+const Technologies = ({ technologiesPromise, handleSavedTechnology, saved }: TechnologiesProps) => {
   const technologies = use(technologiesPromise);
 
   
@@ -25,6 +26,7 @@ const Technologies = ({ technologiesPromise, handleSavedTechnology }: Technologi
                 key={singleTechnology.id} 
                 technology={singleTechnology}
                 handleSavedTechnology={handleSavedTechnology}
+                saved={saved}
             ></TechnologiesCard>
           ))
         )}

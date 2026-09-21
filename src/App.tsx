@@ -77,7 +77,9 @@ function App() {
             <Suspense fallback={<h2>Loading...</h2>}>
               <Technologies
                   handleSavedTechnology={handleSavedTechnology}
-                  technologiesPromise={technologiesPromise}></Technologies>
+                  technologiesPromise={technologiesPromise}
+                  saved={saved}
+                  ></Technologies>
             </Suspense>
 
             {/* stacking list */}

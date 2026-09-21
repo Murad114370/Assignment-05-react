@@ -4,13 +4,16 @@ import type { Itechnology } from "../../types/technologyTypes";
 
 type TechnologyCardProps = {
     technology: Itechnology,
+    saved: Itechnology[]
     handleSavedTechnology: (technology: Itechnology) => void
 
 }
 
-const TechnologiesCard = ({technology, handleSavedTechnology}: TechnologyCardProps) => {
+const TechnologiesCard = ({technology, handleSavedTechnology, saved}: TechnologyCardProps) => {
     const {id, name, category, description, icon, rating, difficulty, badge } = technology;
-    const isSelected = false;
+    // const isSelected = false;
+    const isSelected = saved.some((item) => item.id === technology.id );
+    // console.log(isSelected);
     // const [isSelected, setSelected] = useState(false);
 
     return (
@@ -74,6 +77,7 @@ const TechnologiesCard = ({technology, handleSavedTechnology}: TechnologyCardPro
                 <div className="card-actions mt-6">
 
                     <button
+                        disabled={isSelected}
                         onClick={() => {
                             handleSavedTechnology(technology);
 
@@ -83,8 +87,8 @@ const TechnologiesCard = ({technology, handleSavedTechnology}: TechnologyCardPro
 
                             // setSelected(true);
                         }}
-                        className="btn bg-black text-white w-full rounded-xl font-semibold group-hover:shadow-md transition-shadow duration-300"
-                        disabled={isSelected}
+                        className={`btn bg-black text-white w-full rounded-xl font-semibold group-hover:shadow-md transition-shadow duration-300 ${isSelected ? 'cursor-not-allowed' : 'cursor-pointer'} `}
+                        
                     >
                         {isSelected ? "Selected" : "Add to Stack"}
 

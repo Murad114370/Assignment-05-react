@@ -1,32 +1,16 @@
-# React + TypeScript + Vite
+# ProjectName: An Ideal Development Stack Build.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+# Description:  In this DevStack , I have learned data fetch from database, create promise, pass the promise through props, declaring types of the data, the promise data pass the hook function of use, then using map, creating nav, banner, main(technologies card & stacking list) & footer component respectively as well as also have known props lifting,object pass stacking list, handeling clearall, remove each object, duplicate object selected; thats it.
 
-Currently, two official plugins are available:
+# Technology that I used:
+    1.TypeScript
+    2.React
+    3.Tailwind CSS
+    4.Vite
+    5.React Hot Toast
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# 3 features about my project:
+    1.mobile responsivness for nav & technologiescard section
+    2.nav bar stays sticky while scroling
+    3.when clicked add to stack button toast appers right side
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

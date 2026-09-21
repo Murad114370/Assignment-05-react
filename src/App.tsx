@@ -5,6 +5,7 @@ import Technologies from "./Components/technologies/Technologies";
 import type { Itechnology } from "./types/technologyTypes";
 import StackingList from "./Components/technologies/StackingList";
 import { toast } from "react-hot-toast";
+import Footer from "./Components/Footer";
 
 
 const technologiesFetch = async (): Promise<Itechnology[]> => {
@@ -80,7 +81,7 @@ function App() {
                   technologiesPromise={technologiesPromise}
                   saved={saved}
                   ></Technologies>
-            </Suspense>
+
 
             {/* stacking list */}
             <StackingList 
@@ -88,10 +89,16 @@ function App() {
             handleClearAll={handleClearAll}
             handleRemoveTechnology={handleRemoveTechnology}
             ></StackingList>
+
+            </Suspense>
+
+            
           </div>
 
         </section>
       </main>
+
+      <Footer></Footer>
 
 
 

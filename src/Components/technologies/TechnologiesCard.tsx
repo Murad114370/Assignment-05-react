@@ -9,10 +9,10 @@ type TechnologyCardProps = {
 
 }
 
-const TechnologiesCard = ({technology, handleSavedTechnology, saved}: TechnologyCardProps) => {
-    const {id, name, category, description, icon, rating, difficulty, badge } = technology;
+const TechnologiesCard = ({ technology, handleSavedTechnology, saved }: TechnologyCardProps) => {
+    const { id, name, category, description, icon, rating, difficulty, badge } = technology;
     // const isSelected = false;
-    const isSelected = saved.some((item) => item.id === technology.id );
+    const isSelected = saved.some((item) => item.id === technology.id);
     // console.log(isSelected);
     // const [isSelected, setSelected] = useState(false);
 
@@ -81,20 +81,26 @@ const TechnologiesCard = ({technology, handleSavedTechnology, saved}: Technology
                         onClick={() => {
                             handleSavedTechnology(technology);
 
-                            toast.success(
-                                `${name} added to your stack!`
-                            );
+                            toast.success(`${technology.name} added to your stack!`);
 
                             // setSelected(true);
                         }}
-                        className={`btn bg-black text-white w-full rounded-xl font-semibold group-hover:shadow-md transition-shadow duration-300 ${isSelected ? 'cursor-not-allowed' : 'cursor-pointer'} `}
-                        
-                    >
-                        {isSelected ? "Selected" : "Add to Stack"}
-
-                        <span className="text-lg">
-                            →
-                        </span>
+                        className={`btn bg-black text-white w-full rounded-xl font-semibold 
+                            ${isSelected ? "cursor-not-allowed opacity-60 bg-pink-100 " : "cursor-pointer"}
+                            group-hover:shadow-md transition-shadow duration-300
+                            `}
+                            >
+                            {isSelected ? (
+                            <>
+                                <span className="text-[#fc0983] text-lg font-extrabold">✓</span>
+                                <span className="text-[#fc0983] text-[16px] font-extrabold">Selected</span>
+                            </>
+                        ) : (
+                            <>
+                                <span>Add to Stack</span>
+                                <span className="text-lg">→</span>
+                            </>
+                        )}
                     </button>
 
                 </div>
@@ -102,7 +108,7 @@ const TechnologiesCard = ({technology, handleSavedTechnology, saved}: Technology
             </div>
 
         </div>
-        
+
     );
 };
 

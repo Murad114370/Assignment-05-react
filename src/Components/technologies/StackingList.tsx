@@ -58,6 +58,8 @@ const StackingList = ({ technologies, handleClearAll, handleRemoveTechnology }: 
               ))}
 
               <button
+                type="button"
+                disabled={technologies.length === 0}
                 onClick={handleClearAll}
                 className="btn btn-outline btn-error w-full mt-5"
               >

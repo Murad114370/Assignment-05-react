@@ -55,8 +55,8 @@ function App() {
 
   return (
     <>
-      {/* <Nav></Nav>
-      <Banner></Banner> */}
+      <Nav></Nav>
+      <Banner></Banner>
 
       <main>
         <section className="container mx-auto my-10">
@@ -73,7 +73,7 @@ function App() {
 
           
           {/* Card & Stack */}
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
             {/* technologies component */}
             <Suspense fallback={<h2>Loading...</h2>}>
               <Technologies

@@ -7,7 +7,7 @@ import Logo from "../assets/banner-stack.png";
 
 const Banner = () => {
   return (
-    <div className="flex justify-between items-center  container mx-auto mt-5 ">
+    <div className="flex:col md:flex justify-between items-center  container mx-auto mt-5 ">
       <div >
         <h1 className="text-6xl font-bold pb-4">
           Build Your Ideal <br />

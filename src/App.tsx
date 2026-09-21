@@ -4,6 +4,7 @@ import Nav from "./Components/Nav"
 import Technologies from "./Components/technologies/Technologies";
 import type { Itechnology } from "./types/technologyTypes";
 import StackingList from "./Components/technologies/StackingList";
+import { toast } from "react-hot-toast";
 
 
 const technologiesFetch = async (): Promise<Itechnology[]> => {
@@ -21,9 +22,25 @@ function App() {
   const handleSavedTechnology = (technology: Itechnology) => {
     // console.log({technology});
     setSaved([...saved, technology])
-
   }
   // console.log(saved);
+
+
+  const handleRemoveTechnology = (id: number) => {
+    // console.log({id});
+    // check the item is available
+    const findTecnology = saved.find((item) => item.id === id )
+    // if(!findTecnology) return toast.error('Technologies Not Found')
+    const updatedList = saved.filter((item) => item.id != id )
+    setSaved(updatedList)
+    if(findTecnology) toast.success(`${findTecnology.name} remove from your stack`)
+  }
+
+  const handleClearAll = () => {
+    if(!saved.length) return
+    setSaved([])
+    toast.success('Your stacking list is clear')
+  }
 
   return (
     <>
@@ -54,7 +71,11 @@ function App() {
             </Suspense>
 
             {/* stacking list */}
-            <StackingList technologies={saved}></StackingList>
+            <StackingList 
+            technologies={saved} 
+            handleClearAll={handleClearAll}
+            handleRemoveTechnology={handleRemoveTechnology}
+            ></StackingList>
           </div>
 
         </section>

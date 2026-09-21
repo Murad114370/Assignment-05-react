@@ -2,9 +2,11 @@ import type { Itechnology } from "../../types/technologyTypes";
 
 type ReadingListProps = {
   technologies: Itechnology[];
+  handleRemoveTechnology: (id: number) => void
+  handleClearAll:() => void
 };
 
-const StackingList = ({ technologies }: ReadingListProps) => {
+const StackingList = ({ technologies, handleClearAll, handleRemoveTechnology }: ReadingListProps) => {
   return (
     <div className="col-span-1">
       <div className="card bg-base-100 border border-base-200 shadow-sm rounded-2xl">
@@ -48,12 +50,19 @@ const StackingList = ({ technologies }: ReadingListProps) => {
 
                   </div>
 
-                  <button className="btn btn-ghost btn-sm text-xl">
-                    ✕
+                  <button onClick={ () =>handleRemoveTechnology(item.id) } className="btn btn-ghost btn-sm text-xl">
+                    ✕ 
                   </button>
 
                 </div>
               ))}
+
+              <button
+                onClick={handleClearAll}
+                className="btn btn-outline btn-error w-full mt-5"
+              >
+                Remove All
+              </button>
 
             </div>
           ) : (

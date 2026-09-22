@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { toast } from "react-toastify";
 import type { Itechnology } from "../../types/technologyTypes";
 
@@ -10,7 +10,7 @@ type TechnologyCardProps = {
 }
 
 const TechnologiesCard = ({ technology, handleSavedTechnology, saved }: TechnologyCardProps) => {
-    const { id, name, category, description, icon, rating, difficulty, badge } = technology;
+    const {name, category, description, icon, rating, difficulty, badge } = technology;
     // const isSelected = false;
     const isSelected = saved.some((item) => item.id === technology.id);
     // console.log(isSelected);
